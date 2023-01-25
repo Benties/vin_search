@@ -1,7 +1,15 @@
+import React from 'react';
+import {Route, Routes, BrowserRouter} from 'react-router-dom';
+import Search from './components/Search';
+
 function App() {
   return (
-    <h1>Hello from App</h1>
-  );
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Search/>}/>
+      </Routes>
+    </BrowserRouter>
+  )
 }
 
 export default App;
