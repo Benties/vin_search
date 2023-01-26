@@ -5,6 +5,7 @@ import {Provider} from 'react-redux'
 import './index.css';
 import App from './App';
 import configureStore from './store';
+import { VinProvider } from './context';
 const store = configureStore()
 
 // function Root() {
@@ -22,7 +23,9 @@ const store = configureStore()
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App/>
+      <VinProvider>
+        <App/>
+      </VinProvider>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

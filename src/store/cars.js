@@ -9,7 +9,6 @@ const loadCar = (car) => ({
 
 export const getCarThunk = (vin) => async (dispatch) => {
     const response = await fetch(`https://vpic.nhtsa.dot.gov/api/vehicles/decodevinextended/${vin}?format=json`)
-    console.log(response)
 
         if(response.ok){
             const data = await response.json()
@@ -21,12 +20,12 @@ export const getCarThunk = (vin) => async (dispatch) => {
 }
 
 
-const initialState = {car:{}}
+const initialState = {}
 export default function carReducer(state = initialState, action){
     switch (action.type) {
         case LOAD_CAR:
             const car = action.car
-            return {...state, car:{car}}
+            return {...state, ...car}
         default:
             return state;
     }
