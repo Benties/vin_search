@@ -1,20 +1,18 @@
-import React from 'react';
-import {Route, Routes, BrowserRouter} from 'react-router-dom';
+import React, {useContext} from 'react';
+import {Route, Routes, BrowserRouter, useParams} from 'react-router-dom';
 import Result from './components/Results';
 import Search from './components/Search';
-import {useSelector} from 'react-redux'
-
+import { VinContext } from './context';
 
 function App() {
 
-  // const vin =
-
+  const {car} = useContext(VinContext)
 
   return (
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Search/>}/>
-        <Route path='/car' element={<Result/>}/>
+        <Route path={`/car`} element={<Result car={car}/>}/>
       </Routes>
     </BrowserRouter>
   )

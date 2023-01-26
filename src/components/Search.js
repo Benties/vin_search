@@ -1,11 +1,9 @@
 import { useState, useContext} from "react"
 import { VinContext } from "../context";
-import { useDispatch } from 'react-redux';
-import { getCarThunk } from "../store/cars"
 import {useNavigate} from 'react-router-dom'
 
 function Search(){
-    const dispatch = useDispatch()
+
     const {car , setCar} = useContext(VinContext)
     const [vin, setVin] = useState('')
     const navigate = useNavigate()
@@ -13,12 +11,15 @@ function Search(){
 
     const onSubmit = async (e) => {
         e.preventDefault()
-        const car = await dispatch(getCarThunk(vin))
+        const data = await fetch(`/vin/${vin}`)
+        const car = await data.json()
         if(car){
             setCar(car)
             navigate('/car')
         }
-}
+    }
+
+
     return(
         <div>
             <form onSubmit={onSubmit}>
