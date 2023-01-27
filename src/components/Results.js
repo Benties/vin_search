@@ -6,10 +6,8 @@ function Result ({car, theme}){
     const [data, setData] = useState(car)
 
     const refresh = async () => {
-        const newCar = sessionStorage.getItem('data')
-        console.log(newCar, 'THIS IS IT')
-        const end =  await JSON.parse(newCar)
-        setData(end)
+        const newCar = await JSON.parse(sessionStorage.getItem('data'))
+        setData(newCar)
     }
     // let newCar
     // console.log(sessionStorage.getItem('data'))
