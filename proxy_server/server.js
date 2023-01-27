@@ -13,7 +13,6 @@ const options = {
     safe: false, // Safe Search
     parse_ads: false, // If set to true sponsored results will be parsed
     additional_params: {
-      // add additional parameters here, see https://moz.com/blog/the-ultimate-guide-to-the-google-search-parameters and https://www.seoquake.com/blog/google-search-param/
       hl: 'en'
     }
   }
@@ -21,14 +20,17 @@ const options = {
 
 
   app.get(`/vin/:id`, async (req, res) => {
-    console.log('hello')
     const response = await fetch(`https://vpic.nhtsa.dot.gov/api/vehicles/decodevinextended/${req.params.id}?format=json`)
     const data = await response.json()
-    res.send(data)
+    console.log(data)
+    if(data.Results[4].Value.includes('Manufacturer is not registered with NHTS')){
+      res.send({err: 'err'})
+    } else {
+      res.send(data)
+    }
   })
 
   app.get('/google', async (req, res) => {
-    // console.log(req.query.keyword)
     const response = await google.image(req.query.keyword, options);
     res.send(response)
   })

@@ -40,6 +40,8 @@
 #outer-container{
     height: 100%;
     width: 1000px;
+
+    margin-top: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -71,10 +73,11 @@
 
 #stat-box{
     width: 1000px;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 365px;
+    /* height: 365px; */
     font-size: 40px;
 }
 
@@ -91,8 +94,28 @@
     text-align: center;
 }
 
+#search-title{
+    margin-top: 30px;
+}
 .search-form{
     margin-top: 30px;
     display: flex;
-    flex-direction: column;
+}
+
+.search-form input{
+    width: 95%;
+    height: 40px;
+    font-size: 20px;
+    font-weight: bold;
+    padding-left: 5px;
+}
+
+::placeholder {
+    color: black;
+}
+
+.search-form button{
+    width: 15%;
+    font-size: 15px;
+    font-weight: bold;
 }

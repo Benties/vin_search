@@ -4,7 +4,7 @@ import {useNavigate} from 'react-router-dom'
 
 function Search({theme}){
 
-    const {car , setCar} = useContext(VinContext)
+    const {setCar} = useContext(VinContext)
     const [vin, setVin] = useState('')
     const navigate = useNavigate()
 
@@ -17,26 +17,31 @@ function Search({theme}){
         e.preventDefault()
         const data = await fetch(`/vin/${vin}`)
         const car = await data.json()
-        if(car){
+        if(!car.err){
             sessionStorage.setItem('data', JSON.stringify(car))
             setCar(car)
             navigate('/car')
+        } else {
+            console.log(car)
+            window.alert('Manufacturer is not registered with NHTS')
         }
     }
 
 
     return(
         <div className={theme ? 'master-container':'master-container dark'}>
-            <form onSubmit={onSubmit} className='search-form'>
-            <div>VIN SEARCH</div>
-                <input
-                    type='text'
-                    placeholder="VIN"
-                    value={vin}
-                    onChange={(e) => setVin(e.target.value)}
-                    />
-                <button>Enter</button>
-            </form>
+            <div>
+                <div id='search-title'>VIN SEARCH</div>
+                <form onSubmit={onSubmit} className='search-form'>
+                    <input
+                        type='text'
+                        placeholder="VIN"
+                        value={vin}
+                        onChange={(e) => setVin(e.target.value)}
+                        />
+                    <button>Enter</button>
+                </form>
+            </div>
         </div>
     )
 }

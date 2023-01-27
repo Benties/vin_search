@@ -1,11 +1,9 @@
-import React, {useEffect, useContext, useState} from "react"
-import { VinContext } from "../context/vinContext";
+import React, {useEffect, useState} from "react"
 
 
 
 function Youtube ({car}){
     const [load, setLoad] = useState('')
-    // const {car} = useContext(VinContext)
 
 
        /*** youtubeThis will fetch a backend route, the keyword is

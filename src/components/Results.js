@@ -5,18 +5,15 @@ function Result ({car, theme}){
 
     const [data, setData] = useState(car)
 
+
+    /*** refresh is preventing data loss when the page is refreshed by using
+         browser's session storage   ***/
     const refresh = async () => {
         const newCar = await JSON.parse(sessionStorage.getItem('data'))
         setData(newCar)
     }
-    // let newCar
-    // console.log(sessionStorage.getItem('data'))
-    // if(sessionStorage.getItem('data')){
-    //     newCar = sessionStorage.getItem('data')
-    // }
 
     useEffect(() => {
-        // console.log(sessionStorage.getItem('data'))
         if(!data){
             refresh()
         }
