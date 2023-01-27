@@ -1,5 +1,5 @@
 import React, {useEffect, useContext, useState} from "react"
-import { VinContext } from "../context";
+import { VinContext } from "../context/vinContext";
 
 
 
@@ -13,9 +13,7 @@ function Youtube ({car}){
         const data = await res.json()
 
         if(data){
-            console.log(data)
             setLoad(data.items[0].id)
-            console.log(load)
         }
     }
 
@@ -26,10 +24,11 @@ function Youtube ({car}){
     return (
         <div>
               <iframe
-                width='300'
-                height='250'
+                width='100%'
+                height='300'
                 frameBorder='0'
                 loading='lazy'
+                allowFullScreen
                 src={`https://www.youtube.com/embed/${load}`}
             />
         </div>

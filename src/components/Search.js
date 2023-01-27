@@ -1,8 +1,8 @@
 import { useState, useContext} from "react"
-import { VinContext } from "../context";
+import { VinContext } from "../context/vinContext";
 import {useNavigate} from 'react-router-dom'
 
-function Search(){
+function Search({theme}){
 
     const {car , setCar} = useContext(VinContext)
     const [vin, setVin] = useState('')
@@ -14,6 +14,7 @@ function Search(){
         const data = await fetch(`/vin/${vin}`)
         const car = await data.json()
         if(car){
+            sessionStorage.setItem('data', JSON.stringify(car))
             setCar(car)
             navigate('/car')
         }
@@ -21,15 +22,16 @@ function Search(){
 
 
     return(
-        <div>
-            <form onSubmit={onSubmit}>
+        <div className={theme ? 'master-container':'master-container dark'}>
+            <form onSubmit={onSubmit} className='search-form'>
+            <div>VIN SEARCH</div>
                 <input
                     type='text'
                     placeholder="VIN"
                     value={vin}
                     onChange={(e) => setVin(e.target.value)}
                     />
-                    <button>Enter</button>
+                <button>Enter</button>
             </form>
         </div>
     )

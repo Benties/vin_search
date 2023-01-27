@@ -1,5 +1,5 @@
 import React, {useEffect, useContext, useState} from "react"
-import { VinContext } from "../context";
+import { VinContext } from "../context/vinContext";
 
 
 
@@ -11,9 +11,7 @@ function Google ({car}){
         const res = await fetch(`/google?keyword=${car.Results[7].Value} ${car.Results[9].Value} ${car.Results[10].Value}`)
         if(res){
             const data = await res.json()
-            console.log(data)
-            setLoad([data[0].url, data[1].url])
-            console.log(load)
+            setLoad([data[0].url, data[1].url, data[2].url])
         }
     }
 
@@ -22,17 +20,28 @@ function Google ({car}){
     },[])
 
     return (
-        <div>
-            <img
-                src={load[0]}
-                loading='lazy'
-                width='300px'
-                />
-            <img
-                width='300px'
-                src={load[1]}
-                loading='lazy'
-                />
+        <div id='img-container'>
+            <div className="img-box">
+                <img
+                    src={load[0]}
+                    alt='Car Picture'
+                    loading='lazy'
+                    />
+            </div>
+            <div className="img-box">
+                <img
+                    src={load[1]}
+                    alt='Car Picture'
+                    loading='lazy'
+                    />
+            </div>
+            <div className="img-box">
+                <img
+                    src={load[2]}
+                    alt='Car Picture'
+                    loading='lazy'
+                    />
+            </div>
         </div>
     )
 }
