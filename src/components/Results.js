@@ -6,9 +6,10 @@ function Result ({car, theme}){
     const [data, setData] = useState(car)
 
     const refresh = async () => {
-        const newCar = await sessionStorage.getItem('data').json()
-        console.log(newCar)
-        setData(newCar)
+        const newCar = sessionStorage.getItem('data')
+        console.log(newCar, 'THIS IS IT')
+        const end =  await JSON.parse(newCar)
+        setData(end)
     }
     // let newCar
     // console.log(sessionStorage.getItem('data'))
@@ -17,13 +18,15 @@ function Result ({car, theme}){
     // }
 
     useEffect(() => {
-        console.log('hi')
-        if(data.Results[7].Results === null){
+        // console.log(sessionStorage.getItem('data'))
+        if(!data){
             refresh()
         }
     },[])
 
-
+    if(!data){
+        return null
+    }
     return (
         <div className={theme ? 'master-container':'master-container dark'}>
             <div id='outer-container'>

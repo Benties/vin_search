@@ -8,6 +8,10 @@ function Search({theme}){
     const [vin, setVin] = useState('')
     const navigate = useNavigate()
 
+    /*** onSubmit sends a fetch to a backend route which fetches
+        an API, returning the search results from the VIN entered.
+        The result is then given to the VinContext and wrapped around
+        the app as  a provider.                               ***/
 
     const onSubmit = async (e) => {
         e.preventDefault()

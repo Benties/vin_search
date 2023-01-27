@@ -1,12 +1,13 @@
-import React, {useEffect, useContext, useState} from "react"
-import { VinContext } from "../context/vinContext";
-
-
+import React, {useEffect, useState} from "react"
 
 function Google ({car}){
     const [load, setLoad] = useState([])
-    // const {car} = useContext(VinContext)
 
+
+    /*** googleThis will fetch the backend route, the keyword is
+        Make Model Year respectively. This gets sent to the google-this API,
+        returning an array of images.
+                                                                        ***/
     const googleThis = async () => {
         const res = await fetch(`/google?keyword=${car.Results[7].Value} ${car.Results[9].Value} ${car.Results[10].Value}`)
         if(res){

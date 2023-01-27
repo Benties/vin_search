@@ -8,9 +8,14 @@ function App() {
   const {theme, setTheme} = useContext(ThemeContext)
   const {car} = useContext(VinContext)
 
+
+  /***  changeMode will change the state of the ThemeContext
+        causing a switch between light might and dark mode   ***/
   const changeMode = (e) => {
     setTheme(!theme)
   }
+
+
   return (
     <BrowserRouter>
       <button className={theme ? 'theme-selector' : 'theme-selector dark'} onClick={changeMode}>{theme? 'Light' : 'Dark'}</button>
