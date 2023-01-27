@@ -22,7 +22,6 @@ function Search({theme}){
             setCar(car)
             navigate('/car')
         } else {
-            console.log(car)
             window.alert('Manufacturer is not registered with NHTS')
         }
     }

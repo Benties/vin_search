@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react"
 import Youtube from "./Youtube";
 import Google from "./Google";
+import {useNavigate} from 'react-router-dom'
 function Result ({car, theme}){
-
+    const navigate = useNavigate()
     const [data, setData] = useState(car)
 
-
+    const returnHome = () => {
+        navigate('/')
+    }
     /*** refresh is preventing data loss when the page is refreshed by using
          browser's session storage   ***/
     const refresh = async () => {
@@ -25,7 +28,10 @@ function Result ({car, theme}){
     return (
         <div className={theme ? 'master-container':'master-container dark'}>
             <div id='outer-container'>
-                <div>Results</div>
+                <div id='results-header'>
+                    <button id='home-button' onClick={returnHome}>Home</button>
+                    Results
+                </div>
                 <div id='stat-box'>
                     <div id='stat-header'>Base Stats</div>
                     <div id='base-stats'>

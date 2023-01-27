@@ -22,7 +22,6 @@ const options = {
   app.get(`/vin/:id`, async (req, res) => {
     const response = await fetch(`https://vpic.nhtsa.dot.gov/api/vehicles/decodevinextended/${req.params.id}?format=json`)
     const data = await response.json()
-    console.log(data)
     if(data.Results[4].Value.includes('Manufacturer is not registered with NHTS')){
       res.send({err: 'err'})
     } else {
