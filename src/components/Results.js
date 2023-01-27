@@ -35,7 +35,7 @@ function Result ({car, theme}){
                 <div id='stat-box'>
                     <div id='stat-header'>Base Stats</div>
                     <div id='base-stats'>
-                        <div className="grid-box 3">Make:  {data.Results[7].Value !== null ? data.Results[7].Value : 'N/A'}</div>
+                        <div className="grid-box 3">Make:  {data.Results[7].Value ? data.Results[7].Value : 'N/A'}</div>
                         <div className="grid-box 1">Model:  {data.Results[9].Value ? data.Results[9].Value : 'N/A'}</div>
                         <div className="grid-box 2">Year:  {data.Results[10].Value ? data.Results[10].Value : 'N/A'}</div>
                         <div className="grid-box 10">Trim:  {data.Results[13].Value ? data.Results[13].Value : 'N/A'}</div>
