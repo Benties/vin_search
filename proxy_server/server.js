@@ -5,8 +5,15 @@ const google = require('googlethis')
 const youtubesearchapi = require("youtube-search-api");
 const fetch = require('node-fetch')
 const PORT  = process.env.PORT || 5000
-const environment = process.env.NODE_ENV || 'development'
+// const environment = process.env.NODE_ENV || 'development'
 
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('../build'));
+  app.get('/', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../build', 'index.html'));
+  })
+}
 // if(environment === 'development'){
   app.use(cors())
 // }
