@@ -5,8 +5,11 @@ const google = require('googlethis')
 const youtubesearchapi = require("youtube-search-api");
 const fetch = require('node-fetch')
 const PORT  = process.env.PORT || 5000
+const environment = process.env.NODE_ENV || 'development'
 
-app.use(cors())
+if(environment === 'development'){
+  app.use(cors())
+}
 
 const options = {
     page: 0,
