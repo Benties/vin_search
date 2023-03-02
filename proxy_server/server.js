@@ -4,7 +4,7 @@ const cors = require('cors')
 const google = require('googlethis')
 const youtubesearchapi = require("youtube-search-api");
 const fetch = require('node-fetch')
-const PORT  = 5000
+const PORT  = process.env.PORT || 5000
 
 app.use(cors())
 
